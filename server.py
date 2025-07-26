@@ -4,7 +4,6 @@ import random
 
 app = Flask(__name__)
 
-# Obtener Pokémon desde la PokeAPI
 def obtener_pokemon(nombre_o_id):
     url = f"https://pokeapi.co/api/v2/pokemon/{nombre_o_id}"
     response = requests.get(url)
@@ -25,7 +24,6 @@ def obtener_pokemon(nombre_o_id):
     else:
         return None
 
-# 🟡 /pokemon → muestra 10 Pokémon aleatorios
 @app.route("/pokemon")
 def mostrar_10():
     pokemones = []
@@ -36,7 +34,6 @@ def mostrar_10():
             pokemones.append(pokemon)
     return render_template("pokemon.html", pokemones=pokemones)
 
-# 🔵 /pokemon/<nombre_o_id> → por nombre o ID
 @app.route("/pokemon/<nombre_o_id>")
 def mostrar_pokemon(nombre_o_id):
     if nombre_o_id.startswith("cantidad"):
@@ -48,7 +45,6 @@ def mostrar_pokemon(nombre_o_id):
     else:
         return render_template("404.html"), 404
 
-# 🟣 /pokemon/cantidad/<int:num> → muestra N Pokémon aleatorios
 @app.route("/pokemon/cantidad/<int:num>")
 def mostrar_cantidad(num):
     num = min(num, 151)  # evitar pedir más de 151
@@ -61,7 +57,6 @@ def mostrar_cantidad(num):
             pokemones.append(pokemon)
     return render_template("pokemon.html", pokemones=pokemones)
 
-# 🔴 Página de error
 @app.errorhandler(404)
 def pagina_no_encontrada(_):
     return render_template("404.html"), 404
