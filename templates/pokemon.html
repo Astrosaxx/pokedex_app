@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Pokédex</h1>
+    <div class="pokemon-container">
+        {% for pokemon in pokemones %}
+        <div class="pokemon-card">
+            <figure class="pokemon-image">
+                <h2>(#{{ pokemon.id }})</h2>
+                <img src="{{ pokemon.imagen }}" alt="{{ pokemon.nombre }}">
+            </figure>
+            <div>
+                <h2>{{ pokemon.nombre|capitalize }}</h2>
+                <strong>Tipo:</strong>
+                {% for tipo in pokemon.tipo %}
+                    <span class="tipo">{{ tipo }}</span>
+                {% endfor %}
+            </div>
+            <div><strong>Altura:</strong> {{ pokemon.altura }}</div>
+            <div><strong>Peso:</strong> {{ pokemon.peso }}</div>
+            <div class="habilidades">
+                <strong>Habilidades:</strong>
+                <ul>
+                    {% for habilidad in pokemon.habilidades %}
+                        <li>{{ habilidad }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="stats">
+                <strong>Estadísticas:</strong>
+                <ul>
+                    {% for stat, valor in pokemon.estadisticas.items() %}
+                        <li>{{ stat|capitalize }}: {{ valor }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

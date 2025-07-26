@@ -1,0 +1,97 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #2d72fc;
+    margin-top: 30px;
+    letter-spacing: 2px;
+    font-size: 2.5em;
+}
+
+.pokemon-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.pokemon-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(45, 114, 252, 0.12);
+    padding: 28px 20px 20px 20px;
+    width: 320px;
+    text-align: center;
+    transition: transform 0.2s;
+    border: 2px solid #2d72fc22;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 16px 32px rgba(45, 114, 252, 0.18);
+}
+
+.pokemon-card img {
+    width: 130px;
+    margin: 10px 0 18px 0;
+    filter: drop-shadow(0 2px 8px #2d72fc33);
+}
+
+h2 {
+    margin-bottom: 8px;
+    color: #2d72fc;
+    font-size: 1.4em;
+}
+
+.tipo {
+    display: inline-block;
+    background: linear-gradient(90deg, #2d72fc 60%, #a0c4ff 100%);
+    color: #fff;
+    border-radius: 8px;
+    padding: 4px 14px;
+    margin: 2px 4px;
+    font-size: 0.95em;
+    font-weight: 500;
+    box-shadow: 0 2px 8px #2d72fc22;
+}
+
+.pokemon-card strong {
+    color: #2d72fc;
+}
+
+.pokemon-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 6px 0 0 0;
+}
+
+.pokemon-card li {
+    margin-bottom: 4px;
+    font-size: 1em;
+    color: #333;
+}
+
+.habilidades, .stats {
+    text-align: left;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 700px) {
+    .pokemon-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .pokemon-card {
+        width: 90vw;
+        max-width: 350px;
+    }
+}
